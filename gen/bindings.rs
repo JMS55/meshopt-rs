@@ -489,6 +489,8 @@ extern "C" {
         vertex_attributes_stride: usize,
         attribute_weights: *const f32,
         attribute_count: usize,
+        locked_vertices: *const ::std::os::raw::c_uint,
+        locked_vertex_count: usize,
         target_index_count: usize,
         target_error: f32,
         options: ::std::os::raw::c_uint,
