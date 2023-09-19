@@ -106,8 +106,8 @@ pub fn quantize_float(v: f32, n: i32) -> f32 {
     let mut u = FloatUInt { fl: v };
     let mut ui = unsafe { u.ui };
 
-    let mask = ((1 << (23 - n)) - 1) as i32;
-    let round = ((1 << (23 - n)) >> 1) as i32;
+    let mask = (1 << (23 - n)) - 1;
+    let round = (1 << (23 - n)) >> 1;
 
     let e = (ui & 0x7f80_0000) as i32;
     let rui: u32 = ((ui as i32 + round) & !mask) as u32;
