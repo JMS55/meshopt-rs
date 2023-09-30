@@ -24,9 +24,9 @@ pub struct PackedVertex {
 
 impl FromVertex for PackedVertex {
     fn from_vertex(&mut self, vertex: &Vertex) {
-        self.p[0] = quantize_half(vertex.p[0]) as u16;
-        self.p[1] = quantize_half(vertex.p[1]) as u16;
-        self.p[2] = quantize_half(vertex.p[2]) as u16;
+        self.p[0] = quantize_half(vertex.p[0]);
+        self.p[1] = quantize_half(vertex.p[1]);
+        self.p[2] = quantize_half(vertex.p[2]);
         self.p[3] = 0u16;
 
         self.n[0] = quantize_snorm(vertex.n[0], 8) as i8;
@@ -34,8 +34,8 @@ impl FromVertex for PackedVertex {
         self.n[2] = quantize_snorm(vertex.n[2], 8) as i8;
         self.n[3] = 0i8;
 
-        self.t[0] = quantize_half(vertex.t[0]) as u16;
-        self.t[1] = quantize_half(vertex.t[1]) as u16;
+        self.t[0] = quantize_half(vertex.t[0]);
+        self.t[1] = quantize_half(vertex.t[1]);
     }
 }
 
@@ -49,9 +49,9 @@ pub struct PackedVertexOct {
 
 impl FromVertex for PackedVertexOct {
     fn from_vertex(&mut self, vertex: &Vertex) {
-        self.p[0] = quantize_half(vertex.p[0]) as u16;
-        self.p[1] = quantize_half(vertex.p[1]) as u16;
-        self.p[2] = quantize_half(vertex.p[2]) as u16;
+        self.p[0] = quantize_half(vertex.p[0]);
+        self.p[1] = quantize_half(vertex.p[1]);
+        self.p[2] = quantize_half(vertex.p[2]);
 
         let nsum = vertex.n[0].abs() + vertex.n[1].abs() + vertex.n[2].abs();
         let nx = vertex.n[0] / nsum;
@@ -73,8 +73,8 @@ impl FromVertex for PackedVertexOct {
         self.n[0] = quantize_snorm(nu, 8) as u8;
         self.n[1] = quantize_snorm(nv, 8) as u8;
 
-        self.t[0] = quantize_half(vertex.t[0]) as u16;
-        self.t[1] = quantize_half(vertex.t[1]) as u16;
+        self.t[0] = quantize_half(vertex.t[0]);
+        self.t[1] = quantize_half(vertex.t[1]);
     }
 }
 
