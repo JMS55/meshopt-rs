@@ -7,7 +7,7 @@ pub trait DecodePosition {
 
 impl DecodePosition for [f32; 3] {
     fn decode_position(&self) -> [f32; 3] {
-        self
+        *self
     }
 }
 
